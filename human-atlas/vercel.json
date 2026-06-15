@@ -1,0 +1,24 @@
+{
+  "functions": {
+    "src/app/api/tree/route.ts": {
+      "memory": 1024,
+      "maxDuration": 10
+    },
+    "src/app/api/routes/route.ts": {
+      "memory": 1024,
+      "maxDuration": 10
+    },
+    "src/app/api/admixture/route.ts": {
+      "memory": 1024,
+      "maxDuration": 10
+    },
+    "src/app/api/search/route.ts": {
+      "memory": 512,
+      "maxDuration": 5
+    },
+    "src/app/api/species/route.ts": {
+      "memory": 512,
+      "maxDuration": 10
+    }
+  }
+}

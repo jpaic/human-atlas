@@ -33,7 +33,7 @@ export function NavBar() {
       position: 'relative',
       zIndex: 100,
     }}>
-      <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+      <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, flex: 1 }}>
         <span style={{
           width: 22,
           height: 22,
@@ -81,6 +81,8 @@ export function NavBar() {
       </div>
 
       <div style={{
+        flex: 1,
+        textAlign: 'right',
         fontSize: 11,
         color: 'var(--text-muted)',
         fontFamily: 'var(--font-mono)',

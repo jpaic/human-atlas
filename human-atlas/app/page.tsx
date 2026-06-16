@@ -3,7 +3,6 @@
 import { useState, useMemo, useCallback } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
 import { useAtlasStore } from '@/store/useAtlasStore'
 
 interface Species {
@@ -150,35 +149,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Module links */}
-          <div style={{
-            display: 'flex',
-            gap: 2,
-            justifyContent: 'center',
-          }}>
-            {[
-              { href: '/evolution', label: 'Phylogenetic tree', icon: '⊕', color: '#D97706' },
-              { href: '/migration', label: 'Route atlas',       icon: '⟶', color: '#6B8BA4' },
-              { href: '/genetics',  label: 'Admixture graph',   icon: '⊗', color: '#7EA8A0' },
-            ].map(m => (
-              <Link key={m.href} href={m.href} style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 5,
-                padding: '5px 12px',
-                borderRadius: 6,
-                fontSize: 12,
-                color: 'var(--text-muted)',
-                transition: 'all var(--transition-fast)',
-              }}
-                onMouseEnter={e => { e.currentTarget.style.color = m.color; e.currentTarget.style.background = m.color + '0d' }}
-                onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-muted)'; e.currentTarget.style.background = 'transparent' }}
-              >
-                <span style={{ fontSize: 9, opacity: 0.5 }}>{m.icon}</span>
-                {m.label}
-              </Link>
-            ))}
-          </div>
+
 
           {/* Stat line */}
           {!query.trim() && (
@@ -297,39 +268,12 @@ export default function Home() {
       </div>
     </div>
     <div style={{
-      maxWidth: 680,
-      margin: '0 auto',
-      width: '100%',
-      padding: '14px 24px 18px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: 14,
-      flexWrap: 'wrap',
+      textAlign: 'center',
       fontSize: 11,
       fontFamily: 'var(--font-mono)',
-      color: 'var(--text-muted)',
+      padding: '14px 24px 18px',
       borderTop: '1px solid var(--border-subtle)',
     }}>
-      {[
-        { href: '/evolution', label: 'Tree', icon: '⊕', color: '#D97706' },
-        { href: '/migration', label: 'Map',  icon: '⟶', color: '#6B8BA4' },
-        { href: '/genetics',  label: 'G',    icon: '⊗', color: '#7EA8A0' },
-      ].map(m => (
-        <Link key={m.href} href={m.href} style={{
-          display: 'flex', alignItems: 'center', gap: 4, textDecoration: 'none',
-          color: 'inherit', opacity: 0.5, transition: 'opacity 150ms',
-        }}
-          onMouseEnter={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.color = m.color }}
-          onMouseLeave={e => { e.currentTarget.style.opacity = '0.5'; e.currentTarget.style.color = 'inherit' }}
-        >
-          <span style={{ fontSize: 9 }}>{m.icon}</span>
-          {m.label}
-        </Link>
-      ))}
-      <span style={{ opacity: 0.25 } }>·</span>
-      <span style={{ opacity: 0.4 }}>{stats.total} species · {formatShort(totalSpan)}</span>
-      <span style={{ opacity: 0.25 } }>·</span>
       <a href="https://github.com/jpaic/human-atlas"
          target="_blank"
          rel="noopener noreferrer"
